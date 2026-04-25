@@ -9,7 +9,7 @@ class TPQueue {
     struct Item {
         T data;
         Item* next;
-        Item(const T& value) : data(value), next(nullptr) {}
+        explicit Item(const T& value) : data(value), next(nullptr) {}
     };
     Item* head;
 
@@ -39,7 +39,8 @@ class TPQueue {
             return;
         }
         Item* current = head;
-        while (current->next != nullptr && current->next->data.prior >= item.prior) {
+        while (current->next != nullptr &&
+         current->next->data.prior >= item.prior) {
             current = current->next;
         }
         nnItem->next = current->next;
